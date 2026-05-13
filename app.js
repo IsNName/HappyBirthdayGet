@@ -1,7 +1,16 @@
 const state = {
   manifest: { images: [], videos: [] },
   particlesStarted: false,
-  finaleStarted: false
+  finaleStarted: false,
+  music: {
+    playlist: [
+      "cAaPHNeLTM4",
+      "_gEadvnzK6c",
+      "BjBXoSX5aQI"
+    ],
+    player: null,
+    ready: false
+  }
 };
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -21,10 +30,13 @@ const els = {
   mediaCaption: document.querySelector("#mediaCaption"),
   letterModal: document.querySelector("#letterModal"),
   surpriseButton: document.querySelector("#surpriseButton"),
-  canvas: document.querySelector("#celebrationCanvas")
+  canvas: document.querySelector("#celebrationCanvas"),
+  musicFrame: document.querySelector("#musicFrame"),
+  musicNow: document.querySelector("#musicNow")
 };
 
 document.addEventListener("DOMContentLoaded", init);
+window.onYouTubeIframeAPIReady = createYouTubePlayer;
 
 async function init() {
   els.body.classList.add("is-locked");
@@ -37,6 +49,7 @@ async function init() {
   setupLazyVideos();
   setupScrollAnimations();
   setupTopbar();
+  setupMusicControls();
 }
 
 function bindEvents() {
@@ -59,6 +72,9 @@ function bindEvents() {
     }
   });
   els.surpriseButton.addEventListener("click", launchFinale);
+  document.querySelector("[data-music-play]").addEventListener("click", toggleMusic);
+  document.querySelector("[data-music-prev]").addEventListener("click", playPreviousSong);
+  document.querySelector("[data-music-next]").addEventListener("click", playNextSong);
 }
 
 async function loadManifest() {
@@ -139,10 +155,7 @@ function renderGallery() {
     img.loading = "lazy";
     img.decoding = "async";
 
-    const caption = document.createElement("span");
-    caption.textContent = memoryCaption(index);
-
-    button.append(img, caption);
+    button.append(img);
     button.addEventListener("click", () => openMediaModal("image", image));
     fragment.append(button);
   });
@@ -173,6 +186,8 @@ function renderVideos() {
     videoEl.dataset.src = video.src;
     videoEl.preload = "metadata";
     videoEl.muted = true;
+    videoEl.defaultMuted = true;
+    videoEl.volume = 0;
     videoEl.playsInline = true;
 
     const play = document.createElement("span");
@@ -298,12 +313,84 @@ function openMediaModal(type, media) {
     element.controls = true;
     element.autoplay = true;
     element.playsInline = true;
+    element.muted = true;
+    element.defaultMuted = true;
+    element.volume = 0;
+    element.setAttribute("controlsList", "nodownload noplaybackrate");
   }
 
   els.mediaCaption.textContent = cleanName(media.name);
   els.mediaStage.append(element);
   els.mediaModal.classList.add("is-open");
   els.body.classList.add("is-locked");
+}
+
+function setupMusicControls() {
+  if (!els.musicFrame) return;
+  els.musicFrame.innerHTML = "<div class=\"music-placeholder\">เพิ่มเพลงจาก YouTube ได้ที่ app.js</div>";
+}
+
+function createYouTubePlayer() {
+  if (!window.YT || !window.YT.Player || state.music.player) return;
+  if (!state.music.playlist.length || state.music.playlist[0].includes("VIDEO_ID")) return;
+
+  state.music.player = new YT.Player("musicFrame", {
+    height: "0",
+    width: "0",
+    playerVars: {
+      autoplay: 0,
+      controls: 0,
+      rel: 0,
+      modestbranding: 1,
+      playsinline: 1
+    },
+    events: {
+      onReady: () => {
+        state.music.ready = true;
+        state.music.player.cuePlaylist(state.music.playlist);
+        updateNowPlaying();
+      },
+      onStateChange: (event) => {
+        if (event.data === YT.PlayerState.ENDED) {
+          state.music.player.nextVideo();
+          updateNowPlaying();
+        }
+      }
+    }
+  });
+}
+
+function toggleMusic() {
+  if (!state.music.ready || !state.music.player) {
+    createYouTubePlayer();
+    return;
+  }
+
+  const status = state.music.player.getPlayerState();
+  if (status === YT.PlayerState.PLAYING) {
+    state.music.player.pauseVideo();
+  } else {
+    state.music.player.playVideo();
+  }
+}
+
+function playNextSong() {
+  if (!state.music.ready || !state.music.player) return;
+  state.music.player.nextVideo();
+  updateNowPlaying();
+}
+
+function playPreviousSong() {
+  if (!state.music.ready || !state.music.player) return;
+  state.music.player.previousVideo();
+  updateNowPlaying();
+}
+
+function updateNowPlaying() {
+  if (!els.musicNow || !state.music.player) return;
+  const data = state.music.player.getVideoData();
+  if (!data || !data.title) return;
+  els.musicNow.textContent = `กำลังเล่น: ${data.title}`;
 }
 
 function closeMediaModal() {
