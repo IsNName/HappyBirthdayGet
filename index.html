@@ -67,7 +67,7 @@
             คืนนี้คือรอบฉายพิเศษของเรา ทุกฉากคือความทรงจำที่อบอุ่น และมีแฟนคนเก่งของเราเป็นตัวเอกเสมอ.
           </p>
           <div class="hero-actions">
-            <a class="primary-action" href="#story">▶ Play Story</a>
+            <a class="primary-action" href="#music">▶ Play Music</a>
             <button class="ghost-action" type="button" data-open-letter>♡ Love Letter</button>
           </div>
         </div>
@@ -85,6 +85,10 @@
             <button class="ghost-action" type="button" data-music-prev>◀</button>
             <button class="primary-action" type="button" data-music-play>เล่นเพลง</button>
             <button class="ghost-action" type="button" data-music-next>▶</button>
+          </div>
+          <div class="music-volume">
+            <label for="musicVolume">ระดับเสียง</label>
+            <input id="musicVolume" type="range" min="0" max="100" value="60" data-music-volume />
           </div>
           <div class="music-frame" id="musicFrame"></div>
         </div>
@@ -106,15 +110,6 @@
           <p>คลิปสั้น ๆ ที่เหมือนฉากหนังส่วนตัว ทุกวินาทีมีเหตุผลให้ยิ้ม.</p>
         </div>
         <div class="video-grid" id="videoGrid" aria-live="polite"></div>
-      </section>
-
-      <section class="watch-section page-band" id="watch">
-        <div class="section-heading reveal">
-          <p class="kicker">Continue Watching</p>
-          <h2>Next Episodes</h2>
-          <p>ตอนต่อไปของเราอยู่ในทุกวันที่ได้รักกันต่อ.</p>
-        </div>
-        <div class="watch-row" id="watchRow"></div>
       </section>
 
       <section class="letter-section page-band" id="letter">
@@ -147,12 +142,12 @@
       <button class="modal-close" type="button" data-close-letter aria-label="Close letter">×</button>
       <article class="letter-paper">
         <p class="kicker">To My Favorite Person</p>
-        <h2>ถึงแฟนที่รัก</h2>
+        <h2>ถึงคุณแฟนที่งอแงเก่งมากก</h2>
         <p>
-          ขอบคุณที่เข้ามาเป็นฉากโปรดในชีวิตเรา ขอบคุณที่ทำให้วันธรรมดามีแสงนุ่ม ๆ.
+          ขอบคุณที่เข้ามาเป็นคนโปรดในชีวิตนะ ขอบคุณที่ทำให้วันธรรมดาวุ่นวายได้ทุกวันแต่ก็สนุกมาเลย.
         </p>
         <p>
-          เรารักรอยยิ้มของเธอ รักความตั้งใจของเธอ และอยากอยู่ข้าง ๆ ในทุกซีซันต่อจากนี้.
+          เรารักรอยยิ้มของเธอ รักความตั้งใจของเธอ และอยากอยู่ข้าง ๆ ในทุกซีซันเลย.
         </p>
         <p class="signature">Happy 24th, my love ♡</p>
       </article>

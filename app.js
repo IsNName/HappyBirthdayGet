@@ -9,7 +9,8 @@ const state = {
       "BjBXoSX5aQI"
     ],
     player: null,
-    ready: false
+    ready: false,
+    pendingPlay: false
   }
 };
 
@@ -24,7 +25,7 @@ const els = {
   heroMedia: document.querySelector("#heroMedia"),
   galleryGrid: document.querySelector("#galleryGrid"),
   videoGrid: document.querySelector("#videoGrid"),
-  watchRow: document.querySelector("#watchRow"),
+  videosSection: document.querySelector("#videos"),
   mediaModal: document.querySelector("#mediaModal"),
   mediaStage: document.querySelector("#mediaStage"),
   mediaCaption: document.querySelector("#mediaCaption"),
@@ -32,7 +33,11 @@ const els = {
   surpriseButton: document.querySelector("#surpriseButton"),
   canvas: document.querySelector("#celebrationCanvas"),
   musicFrame: document.querySelector("#musicFrame"),
-  musicNow: document.querySelector("#musicNow")
+  musicNow: document.querySelector("#musicNow"),
+  musicPlay: document.querySelector("[data-music-play]"),
+  musicPrev: document.querySelector("[data-music-prev]"),
+  musicNext: document.querySelector("[data-music-next]"),
+  musicVolume: document.querySelector("[data-music-volume]")
 };
 
 document.addEventListener("DOMContentLoaded", init);
@@ -45,8 +50,7 @@ async function init() {
   renderHero();
   renderGallery();
   renderVideos();
-  renderContinueWatching();
-  setupLazyVideos();
+  setupVideoSectionAutoplay();
   setupScrollAnimations();
   setupTopbar();
   setupMusicControls();
@@ -72,9 +76,10 @@ function bindEvents() {
     }
   });
   els.surpriseButton.addEventListener("click", launchFinale);
-  document.querySelector("[data-music-play]").addEventListener("click", toggleMusic);
-  document.querySelector("[data-music-prev]").addEventListener("click", playPreviousSong);
-  document.querySelector("[data-music-next]").addEventListener("click", playNextSong);
+  els.musicPlay.addEventListener("click", toggleMusic);
+  els.musicPrev.addEventListener("click", playPreviousSong);
+  els.musicNext.addEventListener("click", playNextSong);
+  els.musicVolume.addEventListener("input", updateMusicVolume);
 }
 
 async function loadManifest() {
@@ -189,20 +194,10 @@ function renderVideos() {
     videoEl.defaultMuted = true;
     videoEl.volume = 0;
     videoEl.playsInline = true;
+    videoEl.loop = true;
 
-    const play = document.createElement("span");
-    play.className = "play-icon";
-    play.textContent = "▶";
-
-    const meta = document.createElement("div");
-    meta.className = "video-meta";
-    meta.innerHTML = `
-      <h3>คลิปความทรงจำ ${String(index + 1).padStart(2, "0")}</h3>
-      <p>${cleanName(video.name)}</p>
-    `;
-
-    thumb.append(videoEl, play);
-    card.append(thumb, meta);
+    thumb.append(videoEl);
+    card.append(thumb);
     card.addEventListener("click", () => openMediaModal("video", video));
     fragment.append(card);
   });
@@ -210,10 +205,10 @@ function renderVideos() {
   els.videoGrid.append(fragment);
 }
 
-function setupLazyVideos() {
-  const videos = document.querySelectorAll(".video-thumb video[data-src]");
+function setupVideoSectionAutoplay() {
+  const videos = Array.from(document.querySelectorAll(".video-thumb video[data-src]"));
 
-  if (!videos.length) return;
+  if (!videos.length || !els.videosSection) return;
 
   const loadVideo = (video) => {
     if (video.src) return;
@@ -221,44 +216,33 @@ function setupLazyVideos() {
     video.load();
   };
 
+  const playAll = () => {
+    videos.forEach((video) => {
+      loadVideo(video);
+      video.play().catch(() => null);
+    });
+  };
+
+  const pauseAll = () => {
+    videos.forEach((video) => video.pause());
+  };
+
   if (!("IntersectionObserver" in window)) {
-    videos.forEach(loadVideo);
+    playAll();
     return;
   }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      loadVideo(entry.target);
-      observer.unobserve(entry.target);
+      if (entry.isIntersecting) {
+        playAll();
+      } else {
+        pauseAll();
+      }
     });
-  }, { rootMargin: "360px 0px" });
+  }, { rootMargin: "120px 0px", threshold: 0.3 });
 
-  videos.forEach((video) => observer.observe(video));
-}
-
-function renderContinueWatching() {
-  const episodes = [
-    ["The First Spark", "ตอนที่โลกเริ่มมีเธอ", "78%"],
-    ["Cozy Night", "ตอนที่ผ้าห่มและรอยยิ้มพอดีกัน", "64%"],
-    ["Food Date", "ตอนที่เมนูเดิมอร่อยกว่าเดิม", "86%"],
-    ["Birthday Special", "ตอนที่อยากกอดเธอนาน ๆ", "99%"]
-  ];
-
-  const fragment = document.createDocumentFragment();
-
-  episodes.forEach(([title, description, progress]) => {
-    const article = document.createElement("article");
-    article.className = "watch-card reveal";
-    article.innerHTML = `
-      <h3>${title}</h3>
-      <span class="watch-progress" style="--progress: ${progress}"></span>
-      <p>${description}</p>
-    `;
-    fragment.append(article);
-  });
-
-  els.watchRow.append(fragment);
+  observer.observe(els.videosSection);
 }
 
 function setupScrollAnimations() {
@@ -337,24 +321,36 @@ function createYouTubePlayer() {
   state.music.player = new YT.Player("musicFrame", {
     height: "0",
     width: "0",
+    host: "https://www.youtube-nocookie.com",
     playerVars: {
       autoplay: 0,
       controls: 0,
       rel: 0,
       modestbranding: 1,
-      playsinline: 1
+      playsinline: 1,
+      enablejsapi: 1,
+      origin: window.location.origin
     },
     events: {
       onReady: () => {
         state.music.ready = true;
         state.music.player.cuePlaylist(state.music.playlist);
+        updateMusicVolume();
         updateNowPlaying();
+        updateMusicButton();
+        if (state.music.pendingPlay) {
+          state.music.pendingPlay = false;
+          state.music.player.playVideo();
+        }
       },
       onStateChange: (event) => {
         if (event.data === YT.PlayerState.ENDED) {
-          state.music.player.nextVideo();
-          updateNowPlaying();
+          playNextSong();
         }
+        if (event.data === YT.PlayerState.PLAYING) {
+          updateNowPlayingDelayed();
+        }
+        updateMusicButton();
       }
     }
   });
@@ -362,6 +358,7 @@ function createYouTubePlayer() {
 
 function toggleMusic() {
   if (!state.music.ready || !state.music.player) {
+    state.music.pendingPlay = true;
     createYouTubePlayer();
     return;
   }
@@ -372,25 +369,63 @@ function toggleMusic() {
   } else {
     state.music.player.playVideo();
   }
+  updateNowPlayingDelayed();
+  updateMusicButton();
 }
 
 function playNextSong() {
   if (!state.music.ready || !state.music.player) return;
-  state.music.player.nextVideo();
-  updateNowPlaying();
+  const playlist = state.music.player.getPlaylist();
+  const currentIndex = state.music.player.getPlaylistIndex();
+  if (playlist && currentIndex === playlist.length - 1) {
+    state.music.player.playVideoAt(0);
+  } else {
+    state.music.player.nextVideo();
+  }
+  updateNowPlayingDelayed();
 }
 
 function playPreviousSong() {
   if (!state.music.ready || !state.music.player) return;
-  state.music.player.previousVideo();
-  updateNowPlaying();
+  const playlist = state.music.player.getPlaylist();
+  const currentIndex = state.music.player.getPlaylistIndex();
+  if (playlist && currentIndex === 0) {
+    state.music.player.playVideoAt(playlist.length - 1);
+  } else {
+    state.music.player.previousVideo();
+  }
+  updateNowPlayingDelayed();
+}
+
+function updateMusicButton() {
+  if (!els.musicPlay || !state.music.player) return;
+  const status = state.music.player.getPlayerState();
+  els.musicPlay.textContent = status === YT.PlayerState.PLAYING ? "หยุดเพลง" : "เล่นเพลง";
+}
+
+function updateMusicVolume() {
+  if (!els.musicVolume || !state.music.player) return;
+  state.music.player.setVolume(Number(els.musicVolume.value));
 }
 
 function updateNowPlaying() {
   if (!els.musicNow || !state.music.player) return;
   const data = state.music.player.getVideoData();
-  if (!data || !data.title) return;
-  els.musicNow.textContent = `กำลังเล่น: ${data.title}`;
+  const playlist = state.music.player.getPlaylist();
+  const index = state.music.player.getPlaylistIndex();
+
+  if (data && data.title) {
+    els.musicNow.textContent = `กำลังเล่น: ${data.title}`;
+    return;
+  }
+
+  if (playlist && typeof index === "number") {
+    els.musicNow.textContent = `กำลังเล่นเพลง ${index + 1} / ${playlist.length}`;
+  }
+}
+
+function updateNowPlayingDelayed() {
+  window.setTimeout(updateNowPlaying, 350);
 }
 
 function closeMediaModal() {

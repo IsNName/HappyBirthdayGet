@@ -480,8 +480,7 @@ main {
 
 .anime-grid,
 .food-strip,
-.video-grid,
-.watch-row {
+.video-grid {
   display: grid;
   gap: 1rem;
   width: min(100%, var(--max-width));
@@ -626,6 +625,18 @@ main {
   font-size: 0.9rem;
 }
 
+.music-volume {
+  display: grid;
+  gap: 0.45rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.music-volume input[type="range"] {
+  width: 100%;
+  accent-color: var(--netflix);
+}
+
 .music-placeholder {
   padding: 0.5rem 1rem;
 }
@@ -656,6 +667,7 @@ main {
   background:
     linear-gradient(135deg, rgba(230, 183, 166, 0.16), rgba(156, 183, 198, 0.1)),
     #05060e;
+  border-radius: 0.75rem;
 }
 
 .video-thumb video {
@@ -665,53 +677,6 @@ main {
   opacity: 0.82;
 }
 
-.play-icon {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  display: grid;
-  place-items: center;
-  width: 3.2rem;
-  aspect-ratio: 1;
-  border-radius: 999px;
-  color: var(--white);
-  background: rgba(229, 9, 20, 0.88);
-  box-shadow: 0 0 28px rgba(229, 9, 20, 0.48);
-  transform: translate(-50%, -50%);
-}
-
-.video-meta {
-  padding: 1rem;
-}
-
-.watch-row {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.watch-card {
-  min-height: 10rem;
-  background:
-    linear-gradient(135deg, rgba(229, 9, 20, 0.22), transparent 48%),
-    rgba(255, 255, 255, 0.08);
-}
-
-.watch-progress {
-  display: block;
-  width: 100%;
-  height: 0.28rem;
-  margin: 1rem 0 0.85rem;
-  overflow: hidden;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
-}
-
-.watch-progress::before {
-  content: "";
-  display: block;
-  width: var(--progress);
-  height: 100%;
-  background: var(--netflix);
-}
 
 .letter-shell {
   width: min(100%, 42rem);
@@ -920,8 +885,7 @@ main {
   }
 
   .anime-grid,
-  .food-strip,
-  .watch-row {
+  .food-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -971,8 +935,7 @@ main {
   }
 
   .anime-grid,
-  .food-strip,
-  .watch-row {
+  .food-strip {
     grid-template-columns: 1fr;
   }
 
