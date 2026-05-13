@@ -31,6 +31,7 @@ const els = {
   mediaCaption: document.querySelector("#mediaCaption"),
   letterModal: document.querySelector("#letterModal"),
   surpriseButton: document.querySelector("#surpriseButton"),
+  finaleSection: document.querySelector("#finale"),
   canvas: document.querySelector("#celebrationCanvas"),
   musicFrame: document.querySelector("#musicFrame"),
   musicNow: document.querySelector("#musicNow"),
@@ -107,6 +108,7 @@ function playIntro() {
     els.introScreen.classList.remove("is-playing");
     els.topbar.classList.add("is-visible");
     els.body.classList.remove("is-locked");
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     startFloatingEffects();
   };
 
@@ -505,6 +507,9 @@ function createSparkleParticle() {
 function launchFinale() {
   if (state.finaleStarted && !prefersReducedMotion) return;
   state.finaleStarted = true;
+  if (els.finaleSection) {
+    els.finaleSection.classList.add("is-active");
+  }
   runConfetti(5200);
 }
 
