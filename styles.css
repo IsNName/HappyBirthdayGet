@@ -935,6 +935,78 @@ main {
   animation-duration: 6.4s;
 }
 
+.finale-heart-top-left {
+  top: 4%;
+  left: 12%;
+  width: clamp(5rem, 12vw, 9rem);
+  opacity: 0.65;
+  animation-duration: 5.6s;
+}
+
+.finale-heart-bottom {
+  top: 55%;
+  left: 22%;
+  width: clamp(6rem, 14vw, 11rem);
+  opacity: 0.6;
+  animation-duration: 6.8s;
+}
+
+.finale-heart-far-right {
+  top: 42%;
+  left: 88%;
+  width: clamp(5rem, 12vw, 10rem);
+  opacity: 0.55;
+  animation-duration: 7.2s;
+}
+
+.finale-heart-upper {
+  top: 2%;
+  left: 42%;
+  width: clamp(6rem, 14vw, 12rem);
+  opacity: 0.6;
+  animation-duration: 5.4s;
+}
+
+.finale-heart-upper-right {
+  top: 8%;
+  left: 70%;
+  width: clamp(5rem, 12vw, 10rem);
+  opacity: 0.55;
+  animation-duration: 6.2s;
+}
+
+.finale-heart-mid {
+  top: 28%;
+  left: 50%;
+  width: clamp(6rem, 16vw, 12rem);
+  opacity: 0.5;
+  animation-duration: 6.8s;
+}
+
+.finale-heart-mid-left {
+  top: 34%;
+  left: 10%;
+  width: clamp(5rem, 12vw, 9rem);
+  opacity: 0.55;
+  animation-duration: 6s;
+}
+
+.finale-heart-lower {
+  top: 64%;
+  left: 42%;
+  width: clamp(6rem, 14vw, 11rem);
+  opacity: 0.55;
+  animation-duration: 7s;
+}
+
+.finale-heart-lower-right {
+  top: 70%;
+  left: 78%;
+  width: clamp(5rem, 12vw, 10rem);
+  opacity: 0.5;
+  animation-duration: 7.4s;
+}
+
 .finale-flower {
   position: absolute;
   width: clamp(7rem, 18vw, 14rem);
@@ -970,6 +1042,54 @@ main {
   width: clamp(6rem, 14vw, 11rem);
   opacity: 0.85;
   animation-delay: -3s;
+}
+
+.finale-flower-mid-left {
+  top: 32%;
+  left: 8%;
+  width: clamp(6rem, 14vw, 10rem);
+  opacity: 0.7;
+  animation-delay: -1.8s;
+}
+
+.finale-flower-mid-right {
+  top: 36%;
+  right: 10%;
+  width: clamp(6rem, 14vw, 10rem);
+  opacity: 0.7;
+  animation-delay: -2.8s;
+}
+
+.finale-flower-upper-left {
+  top: 8%;
+  left: 6%;
+  width: clamp(5.5rem, 13vw, 10rem);
+  opacity: 0.65;
+  animation-delay: -1s;
+}
+
+.finale-flower-upper-right {
+  top: 10%;
+  right: 6%;
+  width: clamp(5.5rem, 13vw, 10rem);
+  opacity: 0.65;
+  animation-delay: -2.4s;
+}
+
+.finale-flower-lower-left {
+  bottom: 4%;
+  left: 12%;
+  width: clamp(5.5rem, 13vw, 10rem);
+  opacity: 0.7;
+  animation-delay: -3.4s;
+}
+
+.finale-flower-lower-right {
+  bottom: 6%;
+  right: 14%;
+  width: clamp(5.5rem, 13vw, 10rem);
+  opacity: 0.7;
+  animation-delay: -4s;
 }
 
 .finale-flower .petal {

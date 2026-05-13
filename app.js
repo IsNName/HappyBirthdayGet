@@ -527,7 +527,7 @@ let petalTimer;
 function startPetalFall() {
   if (!els.petalFall) return;
   els.petalFall.innerHTML = "";
-  const count = 38;
+  const count = 70;
 
   for (let i = 0; i < count; i += 1) {
     const petal = document.createElement("span");
