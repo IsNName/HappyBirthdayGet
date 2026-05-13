@@ -1,0 +1,231 @@
+{
+  "generatedAt": "2026-05-13T20:32:31.065Z",
+  "images": [
+    {
+      "name": "8A5089F8-CF5A-4157-A3C6-61365C160B8B.jpg",
+      "src": "img/8A5089F8-CF5A-4157-A3C6-61365C160B8B.jpg",
+      "extension": "jpg",
+      "size": 104489,
+      "updatedAt": "2026-05-13T19:40:53.731Z"
+    },
+    {
+      "name": "IMG_0446.jpg",
+      "src": "img/IMG_0446.jpg",
+      "extension": "jpg",
+      "size": 971134,
+      "updatedAt": "2026-05-13T19:40:23.233Z"
+    },
+    {
+      "name": "IMG_0452.jpg",
+      "src": "img/IMG_0452.jpg",
+      "extension": "jpg",
+      "size": 769070,
+      "updatedAt": "2026-05-13T19:40:16.712Z"
+    },
+    {
+      "name": "IMG_0467.jpg",
+      "src": "img/IMG_0467.jpg",
+      "extension": "jpg",
+      "size": 2135416,
+      "updatedAt": "2026-05-13T19:40:12.455Z"
+    },
+    {
+      "name": "IMG_0480.jpg",
+      "src": "img/IMG_0480.jpg",
+      "extension": "jpg",
+      "size": 449849,
+      "updatedAt": "2026-05-13T19:40:20.060Z"
+    },
+    {
+      "name": "IMG_0966.jpg",
+      "src": "img/IMG_0966.jpg",
+      "extension": "jpg",
+      "size": 1336517,
+      "updatedAt": "2026-05-13T19:39:52.413Z"
+    },
+    {
+      "name": "IMG_5675.jpg",
+      "src": "img/IMG_5675.jpg",
+      "extension": "jpg",
+      "size": 90184,
+      "updatedAt": "2026-05-13T19:41:43.040Z"
+    },
+    {
+      "name": "IMG_5837.jpg",
+      "src": "img/IMG_5837.jpg",
+      "extension": "jpg",
+      "size": 842137,
+      "updatedAt": "2026-05-13T19:41:37.063Z"
+    },
+    {
+      "name": "IMG_6783.jpg",
+      "src": "img/IMG_6783.jpg",
+      "extension": "jpg",
+      "size": 107874,
+      "updatedAt": "2026-05-13T19:41:21.832Z"
+    },
+    {
+      "name": "IMG_6853.jpg",
+      "src": "img/IMG_6853.jpg",
+      "extension": "jpg",
+      "size": 1041647,
+      "updatedAt": "2026-05-13T19:41:24.979Z"
+    },
+    {
+      "name": "IMG_7660.jpg",
+      "src": "img/IMG_7660.jpg",
+      "extension": "jpg",
+      "size": 81596,
+      "updatedAt": "2026-05-13T19:41:15.638Z"
+    },
+    {
+      "name": "IMG_7661.jpg",
+      "src": "img/IMG_7661.jpg",
+      "extension": "jpg",
+      "size": 90637,
+      "updatedAt": "2026-05-13T19:41:18.644Z"
+    },
+    {
+      "name": "IMG_8834.jpg",
+      "src": "img/IMG_8834.jpg",
+      "extension": "jpg",
+      "size": 474722,
+      "updatedAt": "2026-05-13T19:40:47.698Z"
+    },
+    {
+      "name": "IMG_9071.jpg",
+      "src": "img/IMG_9071.jpg",
+      "extension": "jpg",
+      "size": 307214,
+      "updatedAt": "2026-05-13T19:40:29.517Z"
+    },
+    {
+      "name": "IMG_9072.jpg",
+      "src": "img/IMG_9072.jpg",
+      "extension": "jpg",
+      "size": 302632,
+      "updatedAt": "2026-05-13T19:40:26.421Z"
+    },
+    {
+      "name": "IMG_9077.jpg",
+      "src": "img/IMG_9077.jpg",
+      "extension": "jpg",
+      "size": 312750,
+      "updatedAt": "2026-05-13T19:40:32.583Z"
+    },
+    {
+      "name": "IMG_9164.png",
+      "src": "img/IMG_9164.png",
+      "extension": "png",
+      "size": 1998106,
+      "updatedAt": "2026-05-13T19:40:01.475Z"
+    },
+    {
+      "name": "IMG_9165.png",
+      "src": "img/IMG_9165.png",
+      "extension": "png",
+      "size": 2112577,
+      "updatedAt": "2026-05-13T19:40:06.372Z"
+    },
+    {
+      "name": "temp_image_10CBE37E-67AF-4FB2-A602-88BCB5987685.webp",
+      "src": "img/temp_image_10CBE37E-67AF-4FB2-A602-88BCB5987685.webp",
+      "extension": "webp",
+      "size": 422487,
+      "updatedAt": "2026-05-13T19:41:02.458Z"
+    },
+    {
+      "name": "temp_image_AB59421B-AF27-425C-A957-B4B0B09BC258.webp",
+      "src": "img/temp_image_AB59421B-AF27-425C-A957-B4B0B09BC258.webp",
+      "extension": "webp",
+      "size": 519568,
+      "updatedAt": "2026-05-13T19:40:59.930Z"
+    },
+    {
+      "name": "temp_image_E4497541-06D7-4450-A712-C1D2422505E9.webp",
+      "src": "img/temp_image_E4497541-06D7-4450-A712-C1D2422505E9.webp",
+      "extension": "webp",
+      "size": 411358,
+      "updatedAt": "2026-05-13T19:40:56.878Z"
+    }
+  ],
+  "videos": [
+    {
+      "name": "19c4ca1fbd744e7d9b04c0fc4ae2e812.mov",
+      "src": "video/19c4ca1fbd744e7d9b04c0fc4ae2e812.mov",
+      "extension": "mov",
+      "size": 10137378,
+      "updatedAt": "2026-05-13T19:39:55.531Z"
+    },
+    {
+      "name": "1735672748938.mp4",
+      "src": "video/1735672748938.mp4",
+      "extension": "mp4",
+      "size": 4871112,
+      "updatedAt": "2026-05-13T19:41:45.946Z"
+    },
+    {
+      "name": "1735672756123.mp4",
+      "src": "video/1735672756123.mp4",
+      "extension": "mp4",
+      "size": 2028178,
+      "updatedAt": "2026-05-13T19:41:49.719Z"
+    },
+    {
+      "name": "a4a6a15c4f6744b492de79e158abbd20.mov",
+      "src": "video/a4a6a15c4f6744b492de79e158abbd20.mov",
+      "extension": "mov",
+      "size": 7067620,
+      "updatedAt": "2026-05-13T19:41:05.125Z"
+    },
+    {
+      "name": "copy_398CC00A-D5C2-444E-925C-C97C2E832E22.mov",
+      "src": "video/copy_398CC00A-D5C2-444E-925C-C97C2E832E22.mov",
+      "extension": "mov",
+      "size": 9711216,
+      "updatedAt": "2026-05-13T19:39:56.537Z"
+    },
+    {
+      "name": "f5a23c98de07492a8135c844aac9b7fd.mov",
+      "src": "video/f5a23c98de07492a8135c844aac9b7fd.mov",
+      "extension": "mov",
+      "size": 3725201,
+      "updatedAt": "2026-05-13T19:41:10.707Z"
+    },
+    {
+      "name": "IMG_0965.mov",
+      "src": "video/IMG_0965.mov",
+      "extension": "mov",
+      "size": 1959301,
+      "updatedAt": "2026-05-13T19:39:46.763Z"
+    },
+    {
+      "name": "VID_20241229_110430_822.mov",
+      "src": "video/VID_20241229_110430_822.mov",
+      "extension": "mov",
+      "size": 3808187,
+      "updatedAt": "2026-05-13T19:41:33.895Z"
+    },
+    {
+      "name": "VID_20250128_202526_174.mov",
+      "src": "video/VID_20250128_202526_174.mov",
+      "extension": "mov",
+      "size": 762871,
+      "updatedAt": "2026-05-13T19:41:31.957Z"
+    },
+    {
+      "name": "VID_32440323_113310_738.mov",
+      "src": "video/VID_32440323_113310_738.mov",
+      "extension": "mov",
+      "size": 1466412,
+      "updatedAt": "2026-05-13T19:41:29.740Z"
+    },
+    {
+      "name": "VID_32790916_011043_399.mov",
+      "src": "video/VID_32790916_011043_399.mov",
+      "extension": "mov",
+      "size": 965445,
+      "updatedAt": "2026-05-13T19:41:26.919Z"
+    }
+  ]
+}

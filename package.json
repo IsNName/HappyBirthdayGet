@@ -1,0 +1,11 @@
+{
+  "name": "happy-birthdayflix",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A private Netflix anime birthday love story built with HTML, CSS, and JavaScript.",
+  "scripts": {
+    "scan": "node scripts/generate-media-manifest.js",
+    "build": "npm run scan",
+    "dev": "node scripts/dev-server.js"
+  }
+}

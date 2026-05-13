@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A private Netflix anime movie about our relationship."
+    />
+    <title>Happy Birthdayflix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Poppins:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="celebrationCanvas" aria-hidden="true"></canvas>
+    <div class="ambient-layer" aria-hidden="true">
+      <span class="glow glow-one"></span>
+      <span class="glow glow-two"></span>
+      <span class="glow glow-three"></span>
+    </div>
+
+    <section class="start-screen" id="startScreen" aria-label="Tap to start">
+      <div class="start-panel">
+        <p class="kicker">Private Birthday Premiere</p>
+        <h1>Tap to Start</h1>
+        <button class="start-button" id="startButton" type="button">
+          <span>เริ่มดูเรื่องของเรา</span>
+          <span class="heart-mark">♥</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="intro-screen" id="introScreen" aria-hidden="true">
+      <div class="intro-logo" aria-label="Birthdayflix">
+        <span>B</span><span>I</span><span>R</span><span>T</span><span>H</span><span>D</span><span>A</span><span>Y</span><span>F</span><span>L</span><span>I</span><span>X</span>
+      </div>
+      <div class="intro-beam"></div>
+    </section>
+
+    <header class="topbar" id="topbar">
+      <a class="brand" href="#hero" aria-label="Birthdayflix home">BIRTHDAYFLIX</a>
+      <nav class="nav-pills" aria-label="Sections">
+        <a href="#story">Story</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#videos">Videos</a>
+        <a href="#letter">Letter</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section-screen" id="hero">
+        <div class="hero-media" id="heroMedia"></div>
+        <div class="hero-vignette"></div>
+        <div class="hero-content reveal">
+          <p class="netflix-label">A Netflix Anime Original</p>
+          <h2>Happy Birthday</h2>
+          <p class="hero-copy">
+            คืนนี้เป็นรอบฉายพิเศษของความทรงจำเรา ทุกฉากมีเธอเป็นตัวเอก และทุกเฟรมมีคำว่ารักซ่อนอยู่.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#story">▶ Play Story</a>
+            <button class="ghost-action" type="button" data-open-letter>♡ Love Letter</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-section page-band" id="story">
+        <div class="section-heading reveal">
+          <p class="kicker">Season 01</p>
+          <h2>Our Romantic Timeline</h2>
+          <p>เรื่องของเราไหลผ่านเหมือนซีรีส์อบอุ่นยามดึก มีทั้งฉากขำ ฉากเขิน และฉากที่อยากกด replay ซ้ำ ๆ.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <span class="episode-number">EP.01</span>
+            <h3>วันที่โลกเริ่มเปลี่ยนสี</h3>
+            <p>จากบทสนทนาธรรมดา กลายเป็นความรู้สึกที่ค่อย ๆ สว่างขึ้นในใจ.</p>
+          </article>
+          <article class="timeline-item reveal">
+            <span class="episode-number">EP.02</span>
+            <h3>ฉากที่เราเดินข้างกัน</h3>
+            <p>ความทรงจำเล็ก ๆ ระหว่างทาง กลายเป็นภาพโปรดที่ไม่เคยเบื่อ.</p>
+          </article>
+          <article class="timeline-item reveal">
+            <span class="episode-number">EP.03</span>
+            <h3>คืนที่ทุกอย่างอบอุ่นขึ้น</h3>
+            <p>แสงไฟ อาหาร เพลง และเธอ ทำให้คืนธรรมดากลายเป็นบ้านของหัวใจ.</p>
+          </article>
+          <article class="timeline-item reveal">
+            <span class="episode-number">EP.04</span>
+            <h3>ตอนพิเศษวันเกิด</h3>
+            <p>วันนี้อยากให้เธอรู้ว่าเธอคือของขวัญที่ดีที่สุดในทุกวันของเรา.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="anime-section page-band" id="anime">
+        <div class="section-heading reveal">
+          <p class="kicker">Anime Cozy Night</p>
+          <h2>Anime We Watched Together</h2>
+          <p>บรรยากาศผ้าห่มนุ่ม ๆ หน้าจออุ่น ๆ และคนข้าง ๆ ที่ทำให้ทุกตอนน่าจดจำขึ้น.</p>
+        </div>
+        <div class="anime-grid">
+          <article class="anime-card reveal">
+            <div class="anime-frame scene-pink">
+              <span>夜</span>
+            </div>
+            <h3>คืนที่เลือกตอนต่อไป</h3>
+            <p>แค่คำว่า “อีกตอนนึงนะ” ก็กลายเป็นความสุขประจำคืน.</p>
+          </article>
+          <article class="anime-card reveal">
+            <div class="anime-frame scene-blue">
+              <span>恋</span>
+            </div>
+            <h3>ฉากที่แอบจับมือ</h3>
+            <p>บางทีเรื่องบนจอยังไม่หวานเท่าคนที่นั่งดูอยู่ด้วยกัน.</p>
+          </article>
+          <article class="anime-card reveal">
+            <div class="anime-frame scene-gold">
+              <span>夢</span>
+            </div>
+            <h3>ตอนจบที่ไม่อยากให้จบ</h3>
+            <p>เพราะช่วงเวลาที่ได้อยู่ด้วยกัน มักสั้นเกินไปเสมอ.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="food-section page-band" id="food">
+        <div class="section-heading reveal">
+          <p class="kicker">Food Memories</p>
+          <h2>Late Night Menu</h2>
+          <p>อาหารที่อร่อยที่สุดไม่ใช่เมนูแพงที่สุด แต่คือเมนูที่ได้กินกับเธอ.</p>
+        </div>
+        <div class="food-strip">
+          <article class="food-card reveal">
+            <span>🍜</span>
+            <h3>ราเมงอุ่น ๆ</h3>
+            <p>ซุปหอม ๆ กับบทสนทนาที่ทำให้ไม่อยากกลับบ้าน.</p>
+          </article>
+          <article class="food-card reveal">
+            <span>🍰</span>
+            <h3>เค้กวันเกิด</h3>
+            <p>ขอให้ปีนี้ใจดีกับเธอเท่าที่เธอใจดีกับโลก.</p>
+          </article>
+          <article class="food-card reveal">
+            <span>🍿</span>
+            <h3>ขนมตอนดูหนัง</h3>
+            <p>เสียงหัวเราะเล็ก ๆ ระหว่างฉากโปรด คือรสชาติที่จำได้ที่สุด.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="gallery-section page-band" id="gallery">
+        <div class="section-heading reveal">
+          <p class="kicker">Photo Gallery</p>
+          <h2>Scrapbook of Us</h2>
+          <p>ทุกภาพคือแผ่นความทรงจำเล็ก ๆ ที่เก็บแสง เสียงหัวเราะ และความรู้สึกที่ยังอุ่นอยู่เสมอ.</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="video-section page-band" id="videos">
+        <div class="section-heading reveal">
+          <p class="kicker">Video Memories</p>
+          <h2>Cinematic Moments</h2>
+          <p>คลิปสั้น ๆ ที่เหมือนฉากหนังส่วนตัว ทุกวินาทีมีเหตุผลให้ยิ้มกลับไปหา.</p>
+        </div>
+        <div class="video-grid" id="videoGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="watch-section page-band" id="watch">
+        <div class="section-heading reveal">
+          <p class="kicker">Continue Watching</p>
+          <h2>Next Episodes</h2>
+          <p>ตอนต่อไปของเราไม่ได้อยู่บนแพลตฟอร์มไหน แต่อยู่ในทุกวันที่ได้รักกันต่อ.</p>
+        </div>
+        <div class="watch-row" id="watchRow"></div>
+      </section>
+
+      <section class="letter-section page-band" id="letter">
+        <div class="letter-shell reveal">
+          <p class="kicker">Secret Love Letter</p>
+          <h2>มีจดหมายลับรออยู่</h2>
+          <button class="primary-action" type="button" data-open-letter>เปิดอ่าน</button>
+        </div>
+      </section>
+
+      <section class="finale-section section-screen" id="finale">
+        <div class="finale-content reveal">
+          <p class="kicker">Final Surprise</p>
+          <h2>สุขสันต์วันเกิดนะคนเก่ง</h2>
+          <p>
+            ขอให้ปีนี้เต็มไปด้วยแสงที่อ่อนโยน ความฝันที่ค่อย ๆ เป็นจริง และความรักที่ทำให้เธอรู้สึกปลอดภัยเสมอ.
+          </p>
+          <button class="surprise-button" id="surpriseButton" type="button">Launch Surprise</button>
+        </div>
+      </section>
+    </main>
+
+    <div class="media-modal" id="mediaModal" role="dialog" aria-modal="true" aria-label="Media preview">
+      <button class="modal-close" type="button" data-close-media aria-label="Close preview">×</button>
+      <div class="media-stage" id="mediaStage"></div>
+      <p class="media-caption" id="mediaCaption"></p>
+    </div>
+
+    <div class="letter-modal" id="letterModal" role="dialog" aria-modal="true" aria-label="Secret love letter">
+      <button class="modal-close" type="button" data-close-letter aria-label="Close letter">×</button>
+      <article class="letter-paper">
+        <p class="kicker">To My Favorite Person</p>
+        <h2>ถึงเธอในวันเกิด</h2>
+        <p>
+          ขอบคุณที่เข้ามาเป็นฉากโปรดในชีวิตเรา ขอบคุณที่ทำให้วันธรรมดามีแสงนุ่ม ๆ เหมือนคืนที่เปิดอนิเมะดูด้วยกัน.
+        </p>
+        <p>
+          เรารักรอยยิ้มของเธอ รักความตั้งใจของเธอ รักทุกมุมที่เป็นเธอ และอยากอยู่ข้าง ๆ ในทุกซีซันต่อจากนี้.
+        </p>
+        <p class="signature">Happy Birthday, my love ♡</p>
+      </article>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>
