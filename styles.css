@@ -309,6 +309,11 @@ button {
   border-radius: 999px;
   font-size: 0.86rem;
   white-space: nowrap;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-pills a:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 .nav-pills a:hover,
@@ -323,6 +328,7 @@ main {
 
 .section-screen {
   min-height: 100svh;
+  scroll-margin-top: 5.5rem;
 }
 
 .hero {
@@ -417,6 +423,7 @@ main {
 
 .page-band {
   padding: clamp(4.4rem, 8vw, 7rem) clamp(1rem, 4vw, 3rem);
+  scroll-margin-top: 5.5rem;
 }
 
 .section-heading {
@@ -653,14 +660,20 @@ main {
 }
 
 .music-controls {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr minmax(8rem, 1.2fr) 1fr;
   align-items: center;
-  justify-content: center;
   gap: 0.75rem;
 }
 
 .music-controls .ghost-action {
   min-width: 3rem;
+  width: 100%;
+  justify-self: stretch;
+}
+
+.music-controls .primary-action {
+  width: 100%;
 }
 
 .music-frame {
@@ -833,6 +846,11 @@ main {
 .finale-section.is-box-only .finale-motifs {
   opacity: 0;
   transform: translateY(8px) scale(0.98);
+}
+
+.finale-section.is-soft .finale-motifs {
+  opacity: 0.45;
+  transform: translateY(6px) scale(1.02);
 }
 
 .petal-fall {
@@ -1431,12 +1449,7 @@ main {
   }
 
   .music-controls {
-    flex-direction: column;
-  }
-
-  .music-controls .ghost-action,
-  .music-controls .primary-action {
-    width: 100%;
+    grid-template-columns: 1fr 1.4fr 1fr;
   }
 }
 

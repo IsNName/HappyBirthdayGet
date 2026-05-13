@@ -510,19 +510,15 @@ function launchFinale() {
   state.finaleStarted = true;
   if (els.finaleSection) {
     els.finaleSection.classList.add("is-active");
-    els.finaleSection.classList.remove("is-box-only", "is-fadeout");
+    els.finaleSection.classList.remove("is-box-only", "is-fadeout", "is-soft");
   }
   startPetalFall();
   runConfetti(5200);
 
   if (els.finaleSection) {
     window.setTimeout(() => {
-      els.finaleSection.classList.add("is-box-only");
-    }, 3800);
-    window.setTimeout(() => {
-      els.finaleSection.classList.add("is-fadeout");
-      stopPetalFall();
-    }, 7200);
+      els.finaleSection.classList.add("is-soft");
+    }, 5200);
   }
 }
 
@@ -531,13 +527,13 @@ let petalTimer;
 function startPetalFall() {
   if (!els.petalFall) return;
   els.petalFall.innerHTML = "";
-  const count = 24;
+  const count = 38;
 
   for (let i = 0; i < count; i += 1) {
     const petal = document.createElement("span");
     const left = Math.random() * 100;
     const drift = 20 + Math.random() * 60;
-    const duration = 9 + Math.random() * 7;
+    const duration = 10 + Math.random() * 8;
     const delay = Math.random() * 1.8;
     const spin = -120 + Math.random() * 240;
 
@@ -553,7 +549,7 @@ function startPetalFall() {
   clearTimeout(petalTimer);
   petalTimer = window.setTimeout(() => {
     if (els.petalFall) els.petalFall.innerHTML = "";
-  }, 9000);
+  }, 12000);
 }
 
 function stopPetalFall() {
