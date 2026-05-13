@@ -1,16 +1,16 @@
 :root {
-  --ink: #0f172a;
-  --panel: #1e293b;
-  --pink: #f472b6;
-  --blush: #fff0f5;
+  --ink: #0b0f1a;
+  --panel: #1b2233;
+  --pink: #e6b7a6;
+  --blush: #f7efe9;
   --white: #ffffff;
-  --netflix: #e50914;
-  --gold: #fbbf24;
-  --cyan: #67e8f9;
-  --glass: rgba(255, 255, 255, 0.1);
-  --glass-strong: rgba(255, 255, 255, 0.16);
-  --border: rgba(255, 255, 255, 0.2);
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --netflix: #b4232b;
+  --gold: #d9b37c;
+  --cyan: #9cb7c6;
+  --glass: rgba(255, 255, 255, 0.08);
+  --glass-strong: rgba(255, 255, 255, 0.14);
+  --border: rgba(255, 255, 255, 0.18);
+  --shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
   --max-width: 1180px;
 }
 
@@ -28,9 +28,9 @@ body {
   overflow-x: hidden;
   color: var(--white);
   background:
-    radial-gradient(circle at 18% 12%, rgba(244, 114, 182, 0.2), transparent 34rem),
-    radial-gradient(circle at 88% 26%, rgba(103, 232, 249, 0.12), transparent 28rem),
-    linear-gradient(180deg, #050814 0%, var(--ink) 44%, #120817 100%);
+    radial-gradient(circle at 18% 12%, rgba(230, 183, 166, 0.22), transparent 34rem),
+    radial-gradient(circle at 86% 24%, rgba(217, 179, 124, 0.12), transparent 28rem),
+    linear-gradient(180deg, #05060e 0%, var(--ink) 44%, #120c12 100%);
   font-family: "Prompt", "Poppins", "Noto Sans JP", sans-serif;
 }
 
@@ -124,7 +124,7 @@ button {
   text-align: center;
   border: 1px solid var(--border);
   border-radius: 1.5rem;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05));
   box-shadow: var(--shadow);
   backdrop-filter: blur(24px);
 }
@@ -175,7 +175,7 @@ button {
   padding: 0.9rem 1.3rem;
   color: var(--white);
   background: linear-gradient(135deg, var(--netflix), var(--pink));
-  box-shadow: 0 14px 34px rgba(244, 114, 182, 0.32);
+  box-shadow: 0 16px 36px rgba(180, 35, 43, 0.38);
   font-weight: 800;
 }
 
@@ -188,7 +188,7 @@ button {
 .primary-action:hover,
 .surprise-button:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 18px 46px rgba(244, 114, 182, 0.42);
+  box-shadow: 0 20px 52px rgba(180, 35, 43, 0.48);
 }
 
 .heart-mark {
@@ -325,8 +325,8 @@ main {
 
 .hero-media {
   background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.78), rgba(30, 41, 59, 0.34)),
-    radial-gradient(circle at 70% 24%, rgba(244, 114, 182, 0.2), transparent 26rem);
+    linear-gradient(135deg, rgba(11, 15, 26, 0.82), rgba(27, 34, 51, 0.4)),
+    radial-gradient(circle at 70% 24%, rgba(230, 183, 166, 0.2), transparent 26rem);
   background-position: center;
   background-size: cover;
   transform: scale(1.02);
@@ -464,11 +464,11 @@ main {
 .food-card h3,
 .video-card h3,
 .watch-card h3 {
-  margin: 0 0 0.35rem;
-  font-size: 1.15rem;
-}
-
-.timeline-item p,
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
 .anime-card p,
 .food-card p,
 .video-card p,
@@ -567,22 +567,23 @@ main {
 
 .polaroid {
   position: relative;
-  min-height: 17rem;
-  padding: 0.72rem 0.72rem 2.6rem;
-  border: 0;
-  border-radius: 0.35rem;
-  color: var(--ink);
-  background: var(--blush);
-  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.36);
+  min-height: 18rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.9rem;
+  color: var(--white);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 22px 66px rgba(0, 0, 0, 0.35);
   cursor: zoom-in;
-  transform: rotate(var(--tilt));
-  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  transform: translateY(0);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
 }
 
 .polaroid:hover {
   z-index: 4;
-  transform: rotate(0deg) translateY(-0.35rem) scale(1.045);
-  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.48), 0 0 30px rgba(244, 114, 182, 0.26);
+  transform: translateY(-0.45rem) scale(1.03);
+  border-color: rgba(230, 183, 166, 0.6);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 26px rgba(230, 183, 166, 0.2);
 }
 
 .polaroid img {
@@ -590,21 +591,26 @@ main {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: 0.18rem;
-  background: rgba(15, 23, 42, 0.15);
+  border-radius: 0.7rem;
+  background: rgba(15, 23, 42, 0.2);
+  filter: saturate(1.02);
 }
 
 .polaroid span {
   position: absolute;
-  left: 0.8rem;
-  right: 0.8rem;
-  bottom: 0.82rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: 0.85rem;
   overflow: hidden;
-  color: rgba(15, 23, 42, 0.78);
-  font-size: 0.78rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.75rem;
   font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
+  background: rgba(5, 8, 20, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .video-grid {

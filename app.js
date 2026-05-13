@@ -131,7 +131,6 @@ function renderGallery() {
     const button = document.createElement("button");
     button.className = "polaroid reveal";
     button.type = "button";
-    button.style.setProperty("--tilt", `${tiltFor(image.name, index)}deg`);
     button.setAttribute("aria-label", `Open ${cleanName(image.name)}`);
 
     const img = document.createElement("img");
@@ -482,20 +481,13 @@ function cleanName(name) {
 function memoryCaption(index) {
   const captions = [
     "our favorite frame",
-    "soft night memory",
+    "warm night memory",
     "birthday archive",
-    "main character energy",
+    "timeless moment",
     "saved in my heart",
-    "replay this forever"
+    "keep this forever"
   ];
 
   return captions[index % captions.length];
 }
 
-function tiltFor(name, index) {
-  let hash = index * 17;
-  for (let i = 0; i < name.length; i += 1) {
-    hash = (hash + name.charCodeAt(i) * (i + 3)) % 1000;
-  }
-  return ((hash % 9) - 4) * 0.8;
-}
