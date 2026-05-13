@@ -182,7 +182,7 @@ function renderVideos() {
     const meta = document.createElement("div");
     meta.className = "video-meta";
     meta.innerHTML = `
-      <h3>Memory Clip ${String(index + 1).padStart(2, "0")}</h3>
+      <h3>คลิปความทรงจำ ${String(index + 1).padStart(2, "0")}</h3>
       <p>${cleanName(video.name)}</p>
     `;
 
@@ -225,8 +225,8 @@ function setupLazyVideos() {
 function renderContinueWatching() {
   const episodes = [
     ["The First Spark", "ตอนที่โลกเริ่มมีเธอ", "78%"],
-    ["Cozy Anime Night", "ตอนที่ผ้าห่มและรอยยิ้มพอดีกัน", "64%"],
-    ["Food Date Replay", "ตอนที่เมนูเดิมอร่อยกว่าเดิม", "86%"],
+    ["Cozy Night", "ตอนที่ผ้าห่มและรอยยิ้มพอดีกัน", "64%"],
+    ["Food Date", "ตอนที่เมนูเดิมอร่อยกว่าเดิม", "86%"],
     ["Birthday Special", "ตอนที่อยากกอดเธอนาน ๆ", "99%"]
   ];
 
@@ -480,12 +480,12 @@ function cleanName(name) {
 
 function memoryCaption(index) {
   const captions = [
-    "our favorite frame",
-    "warm night memory",
-    "birthday archive",
-    "timeless moment",
-    "saved in my heart",
-    "keep this forever"
+    "เฟรมโปรดของเรา",
+    "คืนที่อบอุ่น",
+    "บันทึกวันเกิด",
+    "ช่วงเวลาที่ดี",
+    "เก็บไว้ในใจ",
+    "อยากเก็บไว้ตลอดไป"
   ];
 
   return captions[index % captions.length];

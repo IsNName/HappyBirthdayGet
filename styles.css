@@ -107,8 +107,8 @@ button {
   padding: 1.5rem;
   background:
     linear-gradient(rgba(5, 8, 20, 0.6), rgba(5, 8, 20, 0.92)),
-    radial-gradient(circle at 50% 42%, rgba(244, 114, 182, 0.26), transparent 26rem),
-    #050814;
+    radial-gradient(circle at 50% 42%, rgba(230, 183, 166, 0.26), transparent 26rem),
+    #05060e;
   transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
@@ -464,11 +464,11 @@ main {
 .food-card h3,
 .video-card h3,
 .watch-card h3 {
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(18px);
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+}
+
+.timeline-item p,
 .anime-card p,
 .food-card p,
 .video-card p,
@@ -490,17 +490,6 @@ main {
 
 .anime-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.anime-card,
-.food-card,
-.video-card,
-.watch-card {
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.24);
-  backdrop-filter: blur(18px);
 }
 
 .anime-card,
@@ -531,19 +520,19 @@ main {
 
 .scene-pink {
   background:
-    linear-gradient(135deg, rgba(244, 114, 182, 0.8), rgba(30, 41, 59, 0.75)),
+    linear-gradient(135deg, rgba(230, 183, 166, 0.8), rgba(30, 41, 59, 0.75)),
     repeating-linear-gradient(90deg, transparent 0 18px, rgba(255, 255, 255, 0.08) 18px 20px);
 }
 
 .scene-blue {
   background:
-    linear-gradient(135deg, rgba(103, 232, 249, 0.54), rgba(15, 23, 42, 0.9)),
+    linear-gradient(135deg, rgba(156, 183, 198, 0.54), rgba(15, 23, 42, 0.9)),
     radial-gradient(circle at 28% 38%, rgba(255, 255, 255, 0.2), transparent 10rem);
 }
 
 .scene-gold {
   background:
-    linear-gradient(135deg, rgba(251, 191, 36, 0.74), rgba(244, 114, 182, 0.35), rgba(15, 23, 42, 0.9)),
+    linear-gradient(135deg, rgba(217, 179, 124, 0.74), rgba(230, 183, 166, 0.35), rgba(15, 23, 42, 0.9)),
     linear-gradient(0deg, rgba(0, 0, 0, 0.22), transparent);
 }
 
@@ -628,8 +617,8 @@ main {
 
 .video-card:hover {
   transform: translateY(-0.35rem);
-  border-color: rgba(244, 114, 182, 0.56);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4), 0 0 34px rgba(244, 114, 182, 0.18);
+  border-color: rgba(230, 183, 166, 0.56);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4), 0 0 34px rgba(230, 183, 166, 0.18);
 }
 
 .video-thumb {
@@ -637,8 +626,8 @@ main {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(244, 114, 182, 0.16), rgba(103, 232, 249, 0.1)),
-    #050814;
+    linear-gradient(135deg, rgba(230, 183, 166, 0.16), rgba(156, 183, 198, 0.1)),
+    #05060e;
 }
 
 .video-thumb video {
@@ -860,7 +849,7 @@ main {
 
 .heart-particle {
   color: var(--pink);
-  text-shadow: 0 0 18px rgba(244, 114, 182, 0.76);
+  text-shadow: 0 0 18px rgba(230, 183, 166, 0.76);
 }
 
 .sparkle-particle {
@@ -894,6 +883,22 @@ main {
 @keyframes pulse {
   50% {
     transform: scale(1.24);
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero-content h2 {
+    font-size: 5.4rem;
+  }
+
+  .anime-grid,
+  .food-strip,
+  .watch-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .video-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
