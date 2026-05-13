@@ -34,6 +34,7 @@ const els = {
   canvas: document.querySelector("#celebrationCanvas"),
   musicFrame: document.querySelector("#musicFrame"),
   musicNow: document.querySelector("#musicNow"),
+  musicPlayer: document.querySelector(".music-player"),
   musicPlay: document.querySelector("[data-music-play]"),
   musicPrev: document.querySelector("[data-music-prev]"),
   musicNext: document.querySelector("[data-music-next]"),
@@ -398,14 +399,17 @@ function playPreviousSong() {
 }
 
 function updateMusicButton() {
-  if (!els.musicPlay || !state.music.player) return;
+  if (!els.musicPlay || !state.music.player || !els.musicPlayer) return;
   const status = state.music.player.getPlayerState();
+  els.musicPlayer.classList.toggle("is-playing", status === YT.PlayerState.PLAYING);
   els.musicPlay.textContent = status === YT.PlayerState.PLAYING ? "หยุดเพลง" : "เล่นเพลง";
 }
 
 function updateMusicVolume() {
   if (!els.musicVolume || !state.music.player) return;
-  state.music.player.setVolume(Number(els.musicVolume.value));
+  const value = Number(els.musicVolume.value);
+  state.music.player.setVolume(value);
+  els.musicVolume.style.setProperty("--volume", `${value}%`);
 }
 
 function updateNowPlaying() {
@@ -507,7 +511,7 @@ function launchFinale() {
 function runConfetti(duration) {
   const canvas = els.canvas;
   const context = canvas.getContext("2d");
-  const colors = ["#f472b6", "#fff0f5", "#ffffff", "#e50914", "#67e8f9", "#fbbf24"];
+  const colors = ["#e6b7a6", "#fff0f5", "#ffffff", "#b4232b", "#9cb7c6", "#d9b37c", "#f6c7c3"];
   const pieces = [];
   const start = performance.now();
 
@@ -522,16 +526,17 @@ function runConfetti(duration) {
   resize();
   window.addEventListener("resize", resize, { passive: true });
 
-  for (let index = 0; index < 170; index += 1) {
+  for (let index = 0; index < 260; index += 1) {
     pieces.push({
       x: Math.random() * window.innerWidth,
       y: -20 - Math.random() * window.innerHeight * 0.5,
-      size: 4 + Math.random() * 8,
-      speed: 1.6 + Math.random() * 4.6,
+      size: 3 + Math.random() * 10,
+      speed: 1.4 + Math.random() * 5.6,
       drift: -2 + Math.random() * 4,
       rotation: Math.random() * Math.PI,
       spin: -0.12 + Math.random() * 0.24,
-      color: colors[Math.floor(Math.random() * colors.length)]
+      color: colors[Math.floor(Math.random() * colors.length)],
+      shape: Math.random() > 0.5 ? "rect" : "diamond"
     });
   }
 
@@ -569,12 +574,23 @@ function runConfetti(duration) {
       context.translate(piece.x, piece.y);
       context.rotate(piece.rotation);
       context.fillStyle = piece.color;
-      context.fillRect(-piece.size / 2, -piece.size / 2, piece.size, piece.size * 0.64);
+      if (piece.shape === "diamond") {
+        context.beginPath();
+        context.moveTo(0, -piece.size / 1.3);
+        context.lineTo(piece.size / 1.2, 0);
+        context.lineTo(0, piece.size / 1.3);
+        context.lineTo(-piece.size / 1.2, 0);
+        context.closePath();
+        context.fill();
+      } else {
+        context.fillRect(-piece.size / 2, -piece.size / 2, piece.size, piece.size * 0.7);
+      }
       context.restore();
     });
 
-    drawFirework(window.innerWidth * 0.24, window.innerHeight * 0.28, now);
-    drawFirework(window.innerWidth * 0.76, window.innerHeight * 0.32, now + 300);
+    drawFirework(window.innerWidth * 0.22, window.innerHeight * 0.28, now);
+    drawFirework(window.innerWidth * 0.78, window.innerHeight * 0.3, now + 300);
+    drawFirework(window.innerWidth * 0.5, window.innerHeight * 0.22, now + 520);
 
     if (now - start < duration) {
       requestAnimationFrame(frame);
