@@ -312,7 +312,7 @@ function openMediaModal(type, media) {
 
 function setupMusicControls() {
   if (!els.musicFrame) return;
-  els.musicFrame.innerHTML = "<div class=\"music-placeholder\">เพิ่มเพลงจาก YouTube ได้ที่ app.js</div>";
+  els.musicFrame.innerHTML = "";
 }
 
 function createYouTubePlayer() {
